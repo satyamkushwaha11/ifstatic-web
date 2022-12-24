@@ -1,23 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import publicRoutes from "./routes/public_routes";
+import Index from "./pages";
+// import PrivateRouting from "./HOC/PrivateRouting";
+import { useEffect } from "react";
 
 function App() {
+  // useEffect(()=>{
+
+  //   publicRoutes.map((item, index) =>{
+  //     console.log( 'd')
+  //   }
+  //   )
+  // },[]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="">
+      <BrowserRouter>
+        <Routes>
+          {publicRoutes &&
+            publicRoutes.length &&
+            publicRoutes.map(({ component: Cmp, ...route }, index) => (
+              <Route
+                key={index}
+                {...route}
+                //   element={() => <Cmp />}
+                element={<Cmp />}
+              />
+            ))}
+          <Route
+            path="/"
+            element={
+              // <PrivateRouting>
+              <Index />
+              // </PrivateRouting>
+            }
+          />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
