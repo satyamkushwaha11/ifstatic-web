@@ -19,7 +19,7 @@ const Footer = () => {
             <br />
             <br />
             <div className='text-white container footer-main pb-3'>
-                <div className='w-100 d-flex justify-content-between align-items-center'>
+                <div className='w-100 d-flex flex-column flex-md-row justify-content-between align-items-center'>
                     <div className='header-left'>
                         <img src='/icons/ifStatic.png' className='app-logo' />
                     </div>
